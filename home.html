@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | PSO Data Portal</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">⚙️ PSO Portal</div>
+            <ul class="nav-links">
+                <li><a href="home.html" class="active">Home</a></li>
+                <li><a href="index.html">Login</a></li>
+                <li><a href="new_form.html">Data Form</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Manage Your <span>PSO Data</span> Efficiently</h1>
+            <p>Modern and secure data management for your engineering and design projects — fast, intuitive, and cloud-ready.</p>
+            <div class="buttons">
+                <a href="index.html" class="btn primary">Get Started</a>
+                <a href="new_form.html" class="btn secondary">New PSO Form</a>
+                 <a href="show_pso.html" class="btn success">View Submitted Data</a>
+            </div>
+        </div>
+        <div class="hero-graphics">
+            <div class="circle"></div>
+            <div class="blob"></div>
+        </div>
+    </section>
+
+<!-- 📊 Dashboard Stats Overview -->
+<section class="dashboard-stats">
+  <h2 class="section-title">📈 Quick Overview</h2>
+  <div class="stats-wrapper">
+    <div class="stat-box">
+      <div class="icon-circle bg-blue"><i class="fas fa-folder-open"></i></div>
+      <div class="stat-info">
+        <h3 class="counter" data-target="120">0</h3>
+        <p>Projects Completed</p>
+      </div>
+    </div>
+
+    <div class="stat-box">
+      <div class="icon-circle bg-green"><i class="fas fa-users"></i></div>
+      <div class="stat-info">
+        <h3 class="counter" data-target="80">0</h3>
+        <p>Active Clients</p>
+      </div>
+    </div>
+
+    <div class="stat-box">
+      <div class="icon-circle bg-orange"><i class="fas fa-database"></i></div>
+      <div class="stat-info">
+        <h3 class="counter" data-target="250">0</h3>
+        <p>PSO Data Entries</p>
+      </div>
+    </div>
+
+    <div class="stat-box">
+      <div class="icon-circle bg-purple"><i class="fas fa-signal"></i></div>
+      <div class="stat-info">
+        <h3 class="counter" data-target="99">0</h3>
+        <p>System Uptime (%)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+    <footer>
+        <p>© 2025 PSO Portal. Designed with ❤️ by Onkar.</p>
+    </footer>
+
+<script>
+  // Counter animation
+  document.querySelectorAll(".counter").forEach(counter => {
+    counter.innerText = "0";
+    const updateCounter = () => {
+      const target = +counter.getAttribute("data-target");
+      const current = +counter.innerText;
+      const increment = target / 100;
+      if (current < target) {
+        counter.innerText = `${Math.ceil(current + increment)}`;
+        setTimeout(updateCounter, 20);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    updateCounter();
+  });
+</script>
+
+
+</body>
+</html>

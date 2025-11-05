@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup | Smart Portal</title>
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="form-box">
+            <h2>Create Account 📝</h2>
+            <p class="subtitle">Join us today</p>
+
+            <form action="signup.php" method="POST">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" placeholder="Choose a username" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter email" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Create password" required>
+                </div>
+
+                <button type="submit" class="btn">Sign Up</button>
+
+                <p class="switch-text">Already have an account? 
+                    <a href="index.html">Login</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

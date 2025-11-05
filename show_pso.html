@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PSO Data Viewer | Smart UI</title>
+  <link rel="stylesheet" href="show_pso.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2 class="logo">Smart<span>UI</span></h2>
+      <ul class="menu">
+        <li><a href="home.html"><i class="fas fa-home"></i> Dashboard</a></li>
+        <li><a href="new_form.html"><i class="fas fa-plus-circle"></i> Add New Data</a></li>
+        <li class="active"><i class="fas fa-table"></i> View PSO Data</li>
+      </ul>
+      <a href="index.html" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="header">
+        <h1>📊 PSO Data Records</h1>
+        <div class="actions">
+          <button id="exportBtn"><i class="fas fa-file-excel"></i> Export Excel</button>
+          <input type="text" id="searchInput" placeholder="🔍 Search data...">
+        </div>
+      </header>
+
+      <!-- Excel-like Data Table -->
+      <section class="data-table-section">
+        <table id="psoTable">
+          <thead>
+            <tr>
+              <th>Enquiry No</th>
+              <th>Customer Name</th>
+              <th>Project Name</th>
+              <th>City</th>
+              <th>Region</th>
+              <th>Received Date</th>
+              <th>Send Date</th>
+              <th>Modules No</th>
+              <th>Pallet Numbers</th>
+              <th>Drawn By</th>
+              <th>Sales Person</th>
+              <th>Revision No</th>
+              <th>Remarks</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Example static data (replace with dynamic PHP later) -->
+            <tr>
+              <td>ENQ-001</td>
+              <td>ABC Corp</td>
+              <td>Solar Project</td>
+              <td>Pune</td>
+              <td>West</td>
+              <td>2025-10-01</td>
+              <td>2025-10-05</td>
+              <td>24</td>
+              <td>5</td>
+              <td>John</td>
+              <td>Michael</td>
+              <td>Rev-2</td>
+              <td>Completed</td>
+            </tr>
+            <tr>
+              <td>ENQ-002</td>
+              <td>XYZ Pvt Ltd</td>
+              <td>Wind Farm</td>
+              <td>Nashik</td>
+              <td>North</td>
+              <td>2025-09-28</td>
+              <td>2025-09-30</td>
+              <td>30</td>
+              <td>6</td>
+              <td>Susan</td>
+              <td>Robert</td>
+              <td>Rev-1</td>
+              <td>Pending Approval</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Live Search Filter
+    const searchInput = document.getElementById('searchInput');
+    const rows = document.querySelectorAll('#psoTable tbody tr');
+
+    searchInput.addEventListener('keyup', () => {
+      const term = searchInput.value.toLowerCase();
+      rows.forEach(row => {
+        const match = row.innerText.toLowerCase().includes(term);
+        row.style.display = match ? '' : 'none';
+      });
+    });
+
+    // Export to Excel
+    document.getElementById('exportBtn').addEventListener('click', () => {
+      let table = document.getElementById("psoTable").outerHTML;
+      let blob = new Blob([table], { type: "application/vnd.ms-excel" });
+      let link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "PSO_Data.xls";
+      link.click();
+    });
+  </script>
+</body>
+</html>
